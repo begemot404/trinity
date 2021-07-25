@@ -426,6 +426,32 @@ jQuery('.challenge-list li').hover(function () {
          </div>
 
          <div class="col-lg-5 col-lg-push-5">
+		 <h2>Форма на email</h2>
+ 
+<form id="my_form_email">
+	<div class="mar10-tb"><label>Имя: <input type="text" name="f[name]" required></label></div>
+	<div class="mar10-tb"><label>Email: <input type="email" name="f[email]" required></label></div>
+	<div><button type="submit">Отправить</button></div>
+</form> 
+ 
+<div id="my_message_email"></div>
+
+<script> 
+$('#my_form_email').submit(function(){
+	
+	$.post(
+		'post-email.php', // адрес обработчика
+		 $("#my_form_email").serialize(), // отправляемые данные  		
+		
+		function(msg) { // получен ответ сервера  
+			// $('#my_form_email').hide('slow');
+			$('#my_message_email').html(msg);
+		}
+	);
+	
+	return false;
+});
+</script> 
             <form id="contact-form" novalidate>
                <div class="row">
                   <div class="col-lg-12">
