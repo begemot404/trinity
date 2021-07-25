@@ -437,7 +437,8 @@ jQuery('.challenge-list li').hover(function () {
 <div id="my_message_email"></div>
 
 <script> 
-$('#my_form_email').submit(function($){
+(function($) {
+$('#my_form_email').submit(function(){
 	
 	$.post(
 		'post-email.php', // адрес обработчика
@@ -451,6 +452,8 @@ $('#my_form_email').submit(function($){
 	
 	return false;
 });
+    })(jQuery);
+
 </script> 
             <form id="contact-form" novalidate>
                <div class="row">
