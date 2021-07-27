@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 	<title>AI TRINITY &#8211; Visual AI Solutions</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -305,7 +304,10 @@
          </div>
 
          <div class="col-lg-5 col-lg-push-5">
-            <form id="contact-form" novalidate>
+
+
+
+            <form id="contact-form"> 
                <div class="row">
                   <div class="col-lg-12">
                      <h3 class="form-title">Contact Us:</h3>
@@ -313,46 +315,63 @@
                </div>
                <div class="row">
                   <div class="col-lg-6">
-                     <input class="form-control" type="text" name="firstName" id="firstName" placeholder="First Name" required/>
+                     <input class="form-control" type="text" name="f[firstname]" id="firstName" placeholder="First Name" required/>
                      <div class="bottom-line"></div>
                   </div>
                   <div class="col-lg-6">
-                     <input class="form-control" type="text" name="lastName" id="lastName" placeholder="Last Name" required/>
-                     <div class="bottom-line"></div>
-                  </div>
-               </div>
-               <div class="row">
-                  <div class="col-lg-6">
-                     <input class="form-control" type="text" name="company" id="company" placeholder="Company" required/>
-                     <div class="bottom-line"></div>
-                  </div>
-                  <div class="col-lg-6">
-                     <input class="form-control" type="text" name="email" id="email" placeholder="Email" required/>
+                     <input class="form-control" type="text" name="f[lastname]" id="lastName" placeholder="Last Name" required/>
                      <div class="bottom-line"></div>
                   </div>
                </div>
                <div class="row">
                   <div class="col-lg-6">
-                     <input class="form-control" type="text" name="phone" id="phone" placeholder="Phone (Optional)" />
+                     <input class="form-control" type="text" name="f[company]" id="company" placeholder="Company" required/>
+                     <div class="bottom-line"></div>
+                  </div>
+                  <div class="col-lg-6">
+                     <input class="form-control" type="text" name="f[email]" id="email" placeholder="Email" required/>
+                     <div class="bottom-line"></div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-lg-6">
+                     <input class="form-control" type="text" name="f[phone]" id="phone" placeholder="Phone (Optional)" />
                      <div class="bottom-line"></div>
                   </div>
                </div>
                <div class="row">
                   <div class="col-lg-12">
-                     <input class="form-control" type="text" class="message-tx" name="message" id="message" placeholder="Message" required/>
+                     <input class="form-control" type="text" class="message-tx" name="f[message]" id="message" placeholder="Message" required/>
                      <div class="bottom-line mesage"></div>
                      <button type="submit" id="btnSubmit" class="submit-btn"></button>   
                   </div>
                </div>
             </form>
+			<div id="my_message_email"></div>
+			<script> 
+(function($) {
+$('#contact-form').submit(function(){
+	 
+	$.post(
+		'post-email.php', // адрес обработчика
+		 $("#contact-form").serialize(), // отправляемые данные  		
+		
+		function(msg) { // получен ответ сервера  
+			$('#contact-form').addClass('dnone');
+			$('#my_message_email').html(msg);
+		}
+	);
+	
+	return false;
+});
+    })(jQuery);
+
+</script> 
          </div>
 
          <div class="col-lg-5 col-lg-pull-5">
             <div class="logo-social">
                 <a href="#" class="levatas-recon-logo" style="background: url('images/aitrinity.png') no-repeat 0 0; background-size: contain;" ></a>
-            </div>
-            <div class="copy-text">
-               <a href="privacy-policy.html">Privacy Policy</a>
             </div>
          </div>
 

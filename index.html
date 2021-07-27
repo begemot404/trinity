@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 	<title>AI TRINITY &#8211; Visual AI Solutions</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -426,26 +425,60 @@ jQuery('.challenge-list li').hover(function () {
          </div>
 
          <div class="col-lg-5 col-lg-push-5">
-		 <h2>Форма на email</h2>
- 
-<form id="my_form_email">
-	<div class="mar10-tb"><label>Имя: <input type="text" name="f[name]" required></label></div>
-	<div class="mar10-tb"><label>Email: <input type="email" name="f[email]" required></label></div>
-	<div><button type="submit">Отправить</button></div>
-</form> 
- 
-<div id="my_message_email"></div>
 
-<script> 
+
+
+            <form id="contact-form"> 
+               <div class="row">
+                  <div class="col-lg-12">
+                     <h3 class="form-title">Contact Us:</h3>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-lg-6">
+                     <input class="form-control" type="text" name="f[firstname]" id="firstName" placeholder="First Name" required/>
+                     <div class="bottom-line"></div>
+                  </div>
+                  <div class="col-lg-6">
+                     <input class="form-control" type="text" name="f[lastname]" id="lastName" placeholder="Last Name" required/>
+                     <div class="bottom-line"></div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-lg-6">
+                     <input class="form-control" type="text" name="f[company]" id="company" placeholder="Company" required/>
+                     <div class="bottom-line"></div>
+                  </div>
+                  <div class="col-lg-6">
+                     <input class="form-control" type="text" name="f[email]" id="email" placeholder="Email" required/>
+                     <div class="bottom-line"></div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-lg-6">
+                     <input class="form-control" type="text" name="f[phone]" id="phone" placeholder="Phone (Optional)" />
+                     <div class="bottom-line"></div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-lg-12">
+                     <input class="form-control" type="text" class="message-tx" name="f[message]" id="message" placeholder="Message" required/>
+                     <div class="bottom-line mesage"></div>
+                     <button type="submit" id="btnSubmit" class="submit-btn"></button>   
+                  </div>
+               </div>
+            </form>
+			<div id="my_message_email"></div>
+			<script> 
 (function($) {
-$('#my_form_email').submit(function(){
-	
+$('#contact-form').submit(function(){
+	 
 	$.post(
 		'post-email.php', // адрес обработчика
-		 $("#my_form_email").serialize(), // отправляемые данные  		
+		 $("#contact-form").serialize(), // отправляемые данные  		
 		
 		function(msg) { // получен ответ сервера  
-			// $('#my_form_email').hide('slow');
+			$('#contact-form').addClass('dnone');
 			$('#my_message_email').html(msg);
 		}
 	);
@@ -455,54 +488,11 @@ $('#my_form_email').submit(function(){
     })(jQuery);
 
 </script> 
-            <form id="contact-form" novalidate>
-               <div class="row">
-                  <div class="col-lg-12">
-                     <h3 class="form-title">Contact Us:</h3>
-                  </div>
-               </div>
-               <div class="row">
-                  <div class="col-lg-6">
-                     <input class="form-control" type="text" name="firstName" id="firstName" placeholder="First Name" required/>
-                     <div class="bottom-line"></div>
-                  </div>
-                  <div class="col-lg-6">
-                     <input class="form-control" type="text" name="lastName" id="lastName" placeholder="Last Name" required/>
-                     <div class="bottom-line"></div>
-                  </div>
-               </div>
-               <div class="row">
-                  <div class="col-lg-6">
-                     <input class="form-control" type="text" name="company" id="company" placeholder="Company" required/>
-                     <div class="bottom-line"></div>
-                  </div>
-                  <div class="col-lg-6">
-                     <input class="form-control" type="text" name="email" id="email" placeholder="Email" required/>
-                     <div class="bottom-line"></div>
-                  </div>
-               </div>
-               <div class="row">
-                  <div class="col-lg-6">
-                     <input class="form-control" type="text" name="phone" id="phone" placeholder="Phone (Optional)" />
-                     <div class="bottom-line"></div>
-                  </div>
-               </div>
-               <div class="row">
-                  <div class="col-lg-12">
-                     <input class="form-control" type="text" class="message-tx" name="message" id="message" placeholder="Message" required/>
-                     <div class="bottom-line mesage"></div>
-                     <button type="submit" id="btnSubmit" class="submit-btn"></button>   
-                  </div>
-               </div>
-            </form>
          </div>
 
          <div class="col-lg-5 col-lg-pull-5">
             <div class="logo-social">
                 <a href="#" class="levatas-recon-logo" style="background: url('images/aitrinity.png') no-repeat 0 0; background-size: contain;" ></a>
-            </div>
-            <div class="copy-text">
-               <a href="privacy-policy.html">Privacy Policy</a>
             </div>
          </div>
 
