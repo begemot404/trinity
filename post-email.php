@@ -3,7 +3,12 @@
 if (!$_POST) exit('No direct script access allowed');
 
 if (!isset($_POST['f'])) exit('No direct script access allowed');
+if (!isset($_POST['f']['firstname'])) exit('No direct script access allowed');
+if (!isset($_POST['f']['lastname'])) exit('No direct script access allowed');
+if (!isset($_POST['f']['company'])) exit('No direct script access allowed');
 if (!isset($_POST['f']['email'])) exit('No direct script access allowed');
+if (!isset($_POST['f']['phone'])) exit('No direct script access allowed');
+if (!isset($_POST['f']['message'])) exit('No direct script access allowed');
 
 $firstname = trim(strip_tags($_POST['f']['firstname']));
 $lastname = trim(strip_tags($_POST['f']['lastname']));
@@ -14,12 +19,24 @@ $message = trim(strip_tags($_POST['f']['message']));
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL))
 {
-	exit('Неверный email! Обновите страницу (F5) и укажите правильный адрес');
+	exit('E-mail not specified! Refresh the page (F5) and enter your e-mail.');
 }
 
-if (!$name)
+if (!$firstname)
 {
-	exit('Не указано имя! Обновите страницу (F5) и укажите своё имя');
+	exit('First name not specified! Refresh the page (F5) and enter your first name.');
+}
+if (!$lastname)
+{
+	exit('Last name not specified! Refresh the page (F5) and enter your last name.');
+}
+if (!$company)
+{
+	exit('Company not specified! Refresh the page (F5) and enter your company.');
+}
+if (!$message)
+{
+	exit('Message not specified! Refresh the page (F5) and enter your message.');
 }
  
 
@@ -41,6 +58,6 @@ $subject = '=?UTF-8?B?' . base64_encode($subject) . '?=';
 // отправка
 @mail($to, $subject, $message, $headers);
 
-echo 'Спасибо, ваше сообщение отправлено!';
+echo 'Thank you, your message has been sent!';
 
 # end of file
